@@ -25,5 +25,33 @@ namespace Library
                 framePoints.Add(new Points(ballOne, ballTwo, tmpFramePoint));
             return tmpFramePoint;
         }
+        public int Score()
+        {
+            int totalScore = 0;
+            int framePoint = 0;            
+            int previousScore = 0;
+            for(int i = 0; i<framePoints.Count; i++)
+            {
+                if(i<10)
+                {
+                    framePoint = framePoints[i].Point;
+                    if(framePoints[i].SpareOrStrike == 'X')
+                    {
+                        framePoint += framePoints[i + 1].BallOne;
+                        if (framePoints[i + 1].SpareOrStrike == 'X')
+                            framePoint += framePoints[i + 2].BallOne;
+                        else
+                            framePoint += framePoints[i + 1].BallTwo;
+                    }
+                    else if (framePoints[i].SpareOrStrike == '/')
+                    {
+                        framePoint += framePoints[i + 1].BallOne;
+                    }
+                    totalScore += framePoint;
+
+                }
+            }
+            return totalScore;
+        }
     }
 }
