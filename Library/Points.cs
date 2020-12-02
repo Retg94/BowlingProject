@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Library
 {
-    class Points
+    public class Points
     {
-        public Points(int ballOne, int ballTwo, int point, char spareOrStrike = '0')
+        public Points(int ballOne, int ballTwo, int point, char spareOrStrike)
         {
             BallOne = ballOne;
             BallTwo = ballTwo;
